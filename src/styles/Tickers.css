@@ -1,0 +1,40 @@
+.Tickers {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #252B32;
+}
+
+.Tickers .Link {
+    margin-right: 10px;
+}
+
+.Tickers .Star {
+    color: #EEB80B;
+}
+
+.Tickers .Tune {
+    color: #3D4653;
+}
+
+.Tickers .RightArrow {
+    color: #3D4653;
+}
+
+.Tickers .Symbol {
+    color: #9499A0;
+    margin-right: 5px;
+    font-weight: 700;
+}
+
+.Tickers .Green {
+    color: #0DCB81;
+}
+
+.Tickers .Red {
+    color: #F7475D;
+}
+
+.Link span {
+    font-size: 14px;
+}

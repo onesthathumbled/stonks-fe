@@ -1,0 +1,28 @@
+.Navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    border-bottom: 1px solid #252B32;
+}
+
+.Navbar .Link {
+    color: #EAECEF;
+    margin-right: 10px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.Navbar .Logo {
+    color: #EEB80B;
+}
+
+.Navbar .Link:hover {
+    color: #EEB80B;
+    cursor: pointer;
+}
+
+.Block-1, .Block-2 {
+    display: flex;
+    align-items: center;
+}

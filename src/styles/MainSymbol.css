@@ -1,0 +1,61 @@
+.MainSymbol {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #252B32;
+}
+
+.MainSymbol .Green {
+    color: #0DCB81;
+}
+
+.MainSymbol .Red {
+    color: #F7475D;
+}
+
+.MainSymbol .Gray {
+    color: #9499A0;
+}
+
+.MainSymbol .Orange {
+    color: #A96338;
+}
+
+.MainSymbol .Details {
+    margin-right: 20px;
+    text-align: center;
+}
+
+.MainSymbol .Symbol {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.MainSymbol .Symbol .Text, .MainSymbol .Price {
+    font-size: 30px;
+}
+
+.MainSymbol .Text {
+    font-weight: 700;
+}
+
+.MainSymbol .Mark .Text,
+.MainSymbol .Index .Text,
+.MainSymbol .Funding .Text,
+.MainSymbol .Change .Text,
+.MainSymbol .High .Text {
+    margin-bottom: 7px;
+}
+
+.MainSymbol .SubText {
+    font-weight: 600;
+}
+
+.MainSymbol .Tune {
+    color: #3D4653;
+}
+
+.MainSymbol .RightArrow {
+    color: #3D4653;
+}
