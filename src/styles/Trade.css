@@ -1,0 +1,118 @@
+.Trade {
+    background-color: #1E2329;
+    width: 100%;
+}
+
+.Trade .Top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #353B42;
+}
+
+.Trade .Top button {
+    background-color: #474D57;
+    border: none;
+    color: #EAECEF;
+    padding: 10px 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.Trade .Tune {
+    color: #3D4653;
+}
+
+.Trade .Mid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #353B42;
+}
+
+.Trade .Inside {
+    display: flex;
+    align-items: center;
+}
+
+.Trade .Inside-2 {
+    display: flex;
+    align-items: center;
+}
+
+.Trade .Inside .Text {
+    color: #6F7682;
+    font-weight: 700;
+}
+
+.Trade .Tr {
+    margin-right: 15px;
+}
+
+.Trade .Market {
+    color: #EEB80B !important;
+}
+
+.Inside-2 .Icon, .Mid .Icon {
+    color: #353B42;
+}
+
+.Form {
+    padding: 20px;
+}
+
+.Form .Price {
+    background-color: #2B3139;
+    padding: 15px 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.Form .Price label {
+    color: #77808C;
+    font-weight: 700;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.Form input {
+    background-color: transparent;
+    border: none;
+    color: #EAECEF;
+    font-weight: 700;
+    font-size: 20px;
+    outline: none;
+    text-align: right;
+}
+
+.Bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Bottom button {
+    background-color: transparent;
+    border: none;
+    color: #EAECEF;
+    padding: 15px 43px;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.Bottom .Buy {
+    background-color: #0DCB81;
+}
+
+.Bottom .Sell {
+    background-color: #F7475D;
+}
