@@ -1,25 +1,21 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Board from './components/Board'
-import MainSymbol from './components/MainSymbol'
-import Chart from './components/Chart'
-import Trade from './components/Trade'
-import './App.css'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-      <div className='App-Flex'>
-        <div>
-          <Board />
-          <MainSymbol />
-          <Chart />
-        </div>
-        <Trade />
-      </div>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<Login />} />
+      </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
