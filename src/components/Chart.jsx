@@ -7,11 +7,11 @@ const Chart = () => {
       <TradingViewWidget
         symbol="AAPL"
         theme="dark"
-        // width="958"
+        width="958"
         // width="1374"
-        width="1530"
-        // height="538"
-        height="773"
+        // width="1530"
+        height="538"
+        // height="773"
         // backgroundColor="#161A1E"
         className="TradingViewWidget"
       />
