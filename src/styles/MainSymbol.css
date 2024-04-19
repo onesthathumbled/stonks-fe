@@ -1,8 +1,9 @@
 .MainSymbol {
   display: flex;
   align-items: center;
-  padding: 20px;
+  height: 13%;
   border-bottom: 1px solid #252b32;
+  padding: 0 20px;
 }
 
 .MainSymbol .Green {
