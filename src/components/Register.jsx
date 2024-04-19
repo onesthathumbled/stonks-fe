@@ -42,7 +42,7 @@ const Register = () => {
 
   useEffect(() => {
     if (auth.user) {
-      navigate("/dashboard");
+      navigate("/dashboard/main");
     }
   }, [auth.user, navigate]);
 
@@ -56,7 +56,7 @@ const Register = () => {
           <input
             className="Input"
             type="email"
-            value={formData.email}
+            value={email}
             onChange={handleChange}
             name="email"
           />
@@ -67,7 +67,7 @@ const Register = () => {
           <input
             className="Input"
             type="password"
-            value={formData.password}
+            value={password}
             onChange={handleChange}
             name="password"
           />
@@ -78,7 +78,7 @@ const Register = () => {
           <input
             className="Input"
             type="password"
-            value={formData.confirmPassword}
+            value={confirmPassword}
             onChange={handleChange}
             name="confirmPassword"
           />

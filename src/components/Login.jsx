@@ -41,7 +41,7 @@ const Login = () => {
 
   useEffect(() => {
     if (auth.user) {
-      navigate("/dashboard");
+      navigate("/dashboard/main");
     }
   }, [auth.user, navigate]);
 

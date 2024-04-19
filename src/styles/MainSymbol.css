@@ -1,43 +1,50 @@
 .MainSymbol {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #252B32;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #252b32;
 }
 
 .MainSymbol .Green {
-    color: #0DCB81;
+  color: #0dcb81;
 }
 
 .MainSymbol .Red {
-    color: #F7475D;
+  color: #f7475d;
 }
 
 .MainSymbol .Gray {
-    color: #9499A0;
+  color: #9499a0;
 }
 
 .MainSymbol .Orange {
-    color: #A96338;
+  color: #a96338;
 }
 
 .MainSymbol .Details {
-    margin-right: 20px;
-    text-align: center;
+  margin-right: 20px;
+  text-align: center;
 }
 
 .MainSymbol .Symbol {
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
 }
 
-.MainSymbol .Symbol .Text, .MainSymbol .Price {
-    font-size: 30px;
+.MainSymbol .Symbol .Text,
+.MainSymbol .Price {
+  font-size: 30px;
 }
 
 .MainSymbol .Text {
-    font-weight: 700;
+  font-weight: 700;
+  width: 100px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
 }
 
 .MainSymbol .Mark .Text,
@@ -45,19 +52,19 @@
 .MainSymbol .Funding .Text,
 .MainSymbol .Change .Text,
 .MainSymbol .High .Text {
-    margin-bottom: 7px;
+  margin-bottom: 7px;
 }
 
 .MainSymbol .SubText {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .MainSymbol .Tune {
-    color: #3D4653;
-    margin-right: 10px;
+  color: #3d4653;
+  margin-right: 10px;
 }
 
 .MainSymbol .RightArrow {
-    color: #3D4653;
-    margin-right: 10px;
+  color: #3d4653;
+  margin-right: 10px;
 }
