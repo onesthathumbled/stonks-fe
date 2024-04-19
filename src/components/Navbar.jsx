@@ -22,12 +22,27 @@ const Navbar = () => {
     <div className="Navbar">
       <div className="Block-1">
         <HomeIcon className="Link" />
-        <Link className="Link Logo">Stonks</Link>
-        <Link className="Link">Futures</Link>
-        <Link className="Link">Options</Link>
-        <Link className="Link">Trading Bots</Link>
-        <Link className="Link">Data</Link>
-        <Link className="Link">More</Link>
+        <Link to="/dashboard/main" className="Link Logo">
+          Stonks
+        </Link>
+        <Link to="/dashboard/trending" className="Link">
+          Trending
+        </Link>
+        <Link to="/dashboard/futures" className="Link">
+          Futures
+        </Link>
+        <Link to="/dashboard/options" className="Link">
+          Options
+        </Link>
+        <Link to="/dashboard/trading-bots" className="Link">
+          Trading Bots
+        </Link>
+        <Link to="/dashboard/data" className="Link">
+          Data
+        </Link>
+        <Link to="/dashboard/more" className="Link">
+          More
+        </Link>
       </div>
 
       <div className="Block-2">

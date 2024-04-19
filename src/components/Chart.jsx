@@ -1,22 +1,26 @@
-import TradingViewWidget from 'react-tradingview-widget';
-import '../styles/Chart.css'
+import TradingViewWidget from "react-tradingview-widget";
+import "../styles/Chart.css";
+import { useSelector } from "react-redux";
 
 const Chart = () => {
+  const search = useSelector((state) => state.search);
+
   return (
     <div className="Chart">
       <TradingViewWidget
-        symbol="AAPL"
-        theme="dark"
-        width="958"
-        // width="1374"
+        symbol={search.search}
+        theme="Dark"
+        // width={958}
+        width={1210}
+        // width={1374}
         // width="1530"
-        height="538"
+        height={571}
         // height="773"
         // backgroundColor="#161A1E"
         className="TradingViewWidget"
       />
     </div>
-  )
-}
+  );
+};
 
-export default Chart
+export default Chart;
