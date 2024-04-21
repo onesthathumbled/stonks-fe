@@ -5,6 +5,8 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
+  wallet: 0,
+  stock: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -53,6 +55,35 @@ export const logout = createAsyncThunk("auth/logout", async (thunkAPI) => {
     return thunkAPI.rejectWithValue(message);
   }
 });
+
+export const wallet = createAsyncThunk("auth/wallet", async (thunkAPI) => {
+  try {
+    return await authService.wallet();
+  } catch (error) {
+    const message =
+      (error.message && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
+export const stock = createAsyncThunk(
+  "auth/stock",
+  async (symbol, thunkAPI) => {
+    try {
+      return await authService.stock(symbol);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -108,6 +139,34 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
+      })
+      .addCase(wallet.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(wallet.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.wallet = action.payload;
+      })
+      .addCase(wallet.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.wallet = null;
+      })
+      .addCase(stock.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(stock.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.stock = action.payload;
+      })
+      .addCase(stock.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.stock = null;
       });
   },
 });

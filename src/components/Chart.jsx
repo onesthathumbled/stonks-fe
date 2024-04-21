@@ -11,7 +11,7 @@ const Chart = () => {
         symbol={search.search}
         theme="Dark"
         // width={958}
-        width={1210}
+        width={1190}
         // width={1374}
         // width="1530"
         height={571}
