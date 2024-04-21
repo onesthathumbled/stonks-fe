@@ -18,11 +18,21 @@ const Chart = () => {
   return (
     <div className="Chart" ref={parentRef}>
       <TradingViewWidget
-          symbol="AAPL"
-          theme="dark"
-          width={parentSize.width - 2}
-          height={parentSize.height - 2}
-          className="TradingViewWidget"
+        symbol={search.search}
+        theme="Dark"
+        // width={958}
+        width={1190}
+        // width={1374}
+        // width="1530"
+        height={571}
+        // height="773"
+        // backgroundColor="#161A1E"
+        className="TradingViewWidget"
+//           symbol="AAPL"
+//           theme="dark"
+//           width={parentSize.width - 2}
+//           height={parentSize.height - 2}
+//           className="TradingViewWidget"
       />
     </div>
   )
