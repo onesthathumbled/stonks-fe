@@ -1,0 +1,37 @@
+.Admin-NavBar-Container {
+    position: fixed;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #252B32;
+    background-color: #131722;
+}
+
+.Block-1 {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 10px;
+}
+
+.Block-2 {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+.Admin-NavBar-Container .Link {
+    color: #EAECEF;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.Admin-NavBar-Container .Logo {
+    color: #EEB80B;
+}
+
+

@@ -3,7 +3,7 @@ import Tickers from './Tickers'
 
 const Board = () => {
   return (
-    <div>
+    <div className='Tickers-Container'>
         <Tickers />
     </div>
   )

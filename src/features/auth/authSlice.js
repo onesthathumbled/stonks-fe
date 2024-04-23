@@ -119,6 +119,38 @@ export const transactions = createAsyncThunk(
   }
 );
 
+export const allTransactions = createAsyncThunk(
+  "auth/allTransactions",
+  async (thunkAPI) => {
+    try {
+      return await authService.allTransactions();
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const pendingUser = createAsyncThunk(
+  "auth/pendingUser",
+  async (thunkAPI) => {
+    try {
+      return await authService.pendingUser();
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -225,6 +257,34 @@ export const authSlice = createSlice({
         state.transactions = action.payload;
       })
       .addCase(transactions.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.transactions = null;
+      })
+      .addCase(allTransactions.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(allTransactions.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.transactions = action.payload;
+      })
+      .addCase(allTransactions.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.transactions = null;
+      })
+      .addCase(pendingUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(pendingUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.transactions = action.payload;
+      })
+      .addCase(pendingUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

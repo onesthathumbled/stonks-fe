@@ -6,6 +6,7 @@ import MainHolder from "./MainHolder";
 import Trending from "./Trending";
 import Portfolio from "./Portfolio";
 import Transactions from "./Transactions";
+import "../styles/Dashboard.css";
 
 const Dashboard = () => {
   const auth = useSelector((state) => state.auth);
@@ -21,7 +22,7 @@ const Dashboard = () => {
     <div className="Dashboard">
       <Navbar />
       {/* <div className="App-Flex"> */}
-      <div>
+      <div className="Dashboard-Body">
         <Routes>
           <Route path="/main" element={<MainHolder />} />
           <Route path="/portfolio" element={<Portfolio />} />
