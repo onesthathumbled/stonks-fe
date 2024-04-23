@@ -6,7 +6,7 @@ import MainHolder from "./MainHolder";
 import Trending from "./Trending";
 import Portfolio from "./Portfolio";
 import Transactions from "./Transactions";
-import '../styles/Dashboard.css'
+import "../styles/Dashboard.css";
 
 const Dashboard = () => {
   const auth = useSelector((state) => state.auth);
