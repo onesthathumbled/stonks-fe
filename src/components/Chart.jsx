@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 const Chart = () => {
   const search = useSelector((state) => state.search);
 
+  // Implement another fix for SR
+
   return (
     <div className="Chart">
       <TradingViewWidget
