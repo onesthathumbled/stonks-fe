@@ -1,0 +1,50 @@
+.New-User-Main-Container {
+    padding: 10px;
+}
+
+.Image-Container,
+.New-User-Title-Container,
+.New-User-Body-Container {
+    display: flex;
+    justify-content: center;
+}
+
+.New-User-Body-Container {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.New-User-Form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.New-User-Title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.Input-Form {
+    padding: 10px 5px;
+    width: 90%;
+    border-radius: 5px;
+}
+
+.Button-Form {
+    width: 50%;
+    padding: 10px 5px;
+    background-color: #EEB80B;
+    border-color: #EEB80B;
+    border-radius: 5px;
+}
+
+.add-error {
+    color: red;
+    font-size: 15px;
+    padding: 5px;
+}

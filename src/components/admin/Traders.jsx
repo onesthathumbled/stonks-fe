@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import '../../styles/admin/Traders.css'
 import Current from "./Current";
 import Pending from "./Pending";
+import NewUser from "./NewUser";
 
 const Traders = () => {
   
   const [ TraderClass, setTraderClass ] = useState('current')
+  const [ addNewUser, setAddNewUser ] = useState(false)
 
   const handleOnClick = (e) => {
 
@@ -22,9 +24,17 @@ const Traders = () => {
       current.style.color = '#EEB80B'
       setTraderClass('current');
     }
-
-    console.log(TraderClass)
   };
+
+  const handleAddNewUserClick = (e) => {
+    e.preventDefault();
+    if (addNewUser === false) {
+      setAddNewUser(true);
+    }
+    else {
+      setAddNewUser(false);
+    }
+  }
 
   return (
     <div className="Traders-Main-Container">
@@ -35,7 +45,7 @@ const Traders = () => {
             <button className="Traders-Options-Button" id = 'pending' value="Pending Users" onClick={handleOnClick}>Pending Users</button>
           </div>
           <div className="Traders-Add-Container">
-            <button className="Add-User-Button">Add a New User</button>
+            <button className="Add-User-Button" onClick={handleAddNewUserClick}>Add a New User</button>
           </div>
         </div>
         <div className="Traders-Table-Container">
@@ -54,7 +64,14 @@ const Traders = () => {
       </div>
 
       <div className="Traders-Body-Right-Container">
-
+            {
+              addNewUser === true ? (
+                <NewUser />
+              ):
+              (
+                <div></div>
+              )
+            }
       </div>
     </div>
   );
