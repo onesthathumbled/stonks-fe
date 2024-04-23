@@ -15,7 +15,7 @@ const Chart = () => {
   }, []);
 
 
-  // Implement another fix for SR
+  // Implement another fix for Screen resolution
 
   return (
     <div className="Chart" ref={parentRef}>
