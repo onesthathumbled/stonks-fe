@@ -1,23 +1,16 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import '../../styles/admin/Current.css';
+import { currentUsers } from '../../features/auth/authSlice';
 
 const Current = () => {
-  let sampleData = [
-    {
-        "id": 2,
-        "email": "mark@tests.com",
-        "created_at": "2024-04-10T11:44:34.640Z",
-        "updated_at": "2024-04-10T11:44:34.640Z",
-        "jti": "2793dbc7-1e72-44a0-ae95-d7636201638d",
-        "status": true,
-        "roles": 0,
-        "wallet": "2000.0"
-    }
-]
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.auth?.transactions);
 
-const [ pendingUser, setPendingUser ] = useState(sampleData);
-
+  useEffect(() => {
+      dispatch(currentUsers());
+  }, [dispatch]);
 
 return (
   <div className="Pending-Table-Container">
@@ -30,13 +23,13 @@ return (
         </thead>
         <tbody>
         {
-            pendingUser.length !== 0 ? (
-              pendingUser.map(pendingUser => (
-                <tr key={pendingUser.id}>
-                  <td>{pendingUser.email}</td>
-                  <td>{pendingUser.roles === 0 ? "Trader" : "Admin"}</td>
+            data ? (
+              data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.email}</td>
+                  <td>{item.roles === 0 ? "Trader" : "Admin"}</td>
                   <td>Authenticated</td>
-                  <td>{new Date(pendingUser.created_at).toLocaleDateString()}</td>
+                  <td>{new Date(item.created_at).toLocaleDateString()}</td>
                 </tr>
               ))
             ) : (

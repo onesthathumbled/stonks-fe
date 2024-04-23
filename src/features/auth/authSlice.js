@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import authService from "./authService";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -151,6 +151,38 @@ export const pendingUser = createAsyncThunk(
   }
 );
 
+export const currentUsers = createAsyncThunk(
+  "auth/currentUsers",
+  async (thunkAPI) => {
+    try {
+      return await authService.currentUsers();
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const addNewUser = createAsyncThunk(
+  "auth/addNewUser",
+  async (user, thunkAPI) => {
+    try {
+      return await authService.addNewUser(user);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -285,6 +317,34 @@ export const authSlice = createSlice({
         state.transactions = action.payload;
       })
       .addCase(pendingUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.transactions = null;
+      })
+      .addCase(currentUsers.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(currentUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.transactions = action.payload;
+      })
+      .addCase(currentUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.transactions = null;
+      })
+      .addCase(addNewUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addNewUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.transactions = action.payload;
+      })
+      .addCase(addNewUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
