@@ -1,0 +1,42 @@
+.Portfolio {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.PTable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 70%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Set table layout to fixed */
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  /* border-bottom: 1px solid #ddd; */
+  width: 33%; /* Equal width for each cell */
+}
+
+th {
+  background-color: #1e2329;
+  color: white; /* Text color for header */
+}
+
+tr:nth-child(even) {
+  background-color: #eeb80b;
+  color: #131722;
+}
+
+tr:hover {
+  background-color: #ddd;
+  color: #131722;
+}

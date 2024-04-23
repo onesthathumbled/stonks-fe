@@ -7,6 +7,8 @@ const initialState = {
   user: user ? user : null,
   wallet: 0,
   stock: [],
+  portfolio: [],
+  transactions: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -74,6 +76,38 @@ export const stock = createAsyncThunk(
   async (symbol, thunkAPI) => {
     try {
       return await authService.stock(symbol);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const portfolio = createAsyncThunk(
+  "auth/portfolio",
+  async (thunkAPI) => {
+    try {
+      return await authService.portfolio();
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const transactions = createAsyncThunk(
+  "auth/transactions",
+  async (thunkAPI) => {
+    try {
+      return await authService.transactions();
     } catch (error) {
       const message =
         (error.message && error.response.data && error.response.data.message) ||
@@ -167,6 +201,34 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.stock = null;
+      })
+      .addCase(portfolio.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(portfolio.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.portfolio = action.payload;
+      })
+      .addCase(portfolio.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.portfolio = null;
+      })
+      .addCase(transactions.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(transactions.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.transactions = action.payload;
+      })
+      .addCase(transactions.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.transactions = null;
       });
   },
 });

@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import MainHolder from "./MainHolder";
 import Trending from "./Trending";
+import Portfolio from "./Portfolio";
+import Transactions from "./Transactions";
 import '../styles/Dashboard.css'
 
 const Dashboard = () => {
@@ -23,6 +25,8 @@ const Dashboard = () => {
       <div className="Dashboard-Body">
         <Routes>
           <Route path="/main" element={<MainHolder />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/transactions" element={<Transactions />} />
           <Route path="/trending" element={<Trending />} />
         </Routes>
       </div>

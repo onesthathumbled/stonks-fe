@@ -85,11 +85,59 @@ const stock = async (symbol) => {
   }
 };
 
+const portfolio = async () => {
+  const token = JSON.parse(localStorage.getItem("authToken"));
+
+  if (!token) {
+    console.error("Token not found in localStorage");
+    return null;
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const response = await axios.get(`${API_URL}/trader/portfolio`, config);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching stock quote:", error);
+    return null;
+  }
+};
+
+const transactions = async () => {
+  const token = JSON.parse(localStorage.getItem("authToken"));
+
+  if (!token) {
+    console.error("Token not found in localStorage");
+    return null;
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const response = await axios.get(`${API_URL}/trader/transactions`, config);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching stock quote:", error);
+    return null;
+  }
+};
+
 const authService = {
   login,
   register,
   wallet,
   stock,
+  portfolio,
+  transactions,
 };
 
 export default authService;
