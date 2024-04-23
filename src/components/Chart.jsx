@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Chart = () => {
   const search = useSelector((state) => state.search);
 
-  // Implement another fix for SR
+  // Implement another fix for Screen resolution
 
   return (
     <div className="Chart">
