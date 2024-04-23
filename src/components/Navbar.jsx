@@ -25,6 +25,12 @@ const Navbar = () => {
         <Link to="/dashboard/main" className="Link Logo">
           Stonks
         </Link>
+        <Link to="/dashboard/portfolio" className="Link">
+          Portfolio
+        </Link>
+        <Link to="/dashboard/transactions" className="Link">
+          Transactions
+        </Link>
         <Link to="/dashboard/trending" className="Link">
           Trending
         </Link>

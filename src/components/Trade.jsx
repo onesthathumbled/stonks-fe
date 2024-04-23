@@ -46,8 +46,6 @@ const Trade = () => {
   const handleSell = async (e) => {
     e.preventDefault();
 
-    const total = quantity * parseInt(symbol.quote?.latest_price);
-
     if (quantity <= user.stock?.stock?.quantity) {
       const transactionData = {
         symbol: symbol.quote?.symbol,
@@ -98,13 +96,18 @@ const Trade = () => {
       <div className="LowerMid">
         <div className="Wallet">
           <p className="Text">Wallet</p>
-          <p className="Sub">${user.wallet?.wallet}</p>
+          <p className="Sub">${parseFloat(user.wallet?.wallet).toFixed(2)}</p>
         </div>
 
         <div className="Total">
           <p className="Text">Total</p>
           <p className="Sub">
-            ${quantity ? quantity * parseInt(symbol.quote?.latest_price) : 0}
+            $
+            {quantity
+              ? parseFloat(
+                  quantity * parseInt(symbol.quote?.latest_price)
+                ).toFixed(2)
+              : 0}
           </p>
         </div>
 
