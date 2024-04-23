@@ -1,0 +1,19 @@
+.Pending-Table-Container {
+    width: 100%;
+    height: 100%;
+}
+
+.Pending-Table {
+    width: 100%;
+}
+
+.Pending-Table th {
+    text-align: center;
+    background: transparent;
+    padding: 20px;
+}
+
+.Pending-Table td {
+    text-align: center;
+    padding: 20px;
+}

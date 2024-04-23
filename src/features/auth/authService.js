@@ -131,6 +131,54 @@ const transactions = async () => {
   }
 };
 
+const allTransactions = async () => {
+  const token = JSON.parse(localStorage.getItem("authToken"));
+
+  if (!token) {
+    console.error("Token not found in localStorage");
+    return null;
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const response = await axios.get(`${API_URL}/admin/show_transactions`, config);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching all transactions:", error);
+    return null;
+  }
+};
+
+const pendingUser = async () => {
+  const token = JSON.parse(localStorage.getItem("authToken"));
+
+  if (!token) {
+    console.error("Token not found in localStorage");
+    return null;
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const response = await axios.get(`${API_URL}/admin/show_pending_traders`, config);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching pending users:", error);
+    return null;
+  }
+};
+
+
+
 const authService = {
   login,
   register,
@@ -138,6 +186,8 @@ const authService = {
   stock,
   portfolio,
   transactions,
+  allTransactions,
+  pendingUser
 };
 
 export default authService;

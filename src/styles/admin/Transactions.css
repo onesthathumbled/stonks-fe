@@ -1,0 +1,55 @@
+.Admin-Transactions-Container {
+     height: 100vh;
+}
+
+.Admin-Transactions-Body {
+    height: 100%;
+    display: flex;
+}
+
+.Admin-Transactions-Left-Container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid #252B32;
+    padding: 70px 10px 10px 10px;
+}
+
+.Admin-Transactions-Left-Title {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    border-bottom: 1px solid #252B32;
+}
+
+.Admin-Transaction-Table-Container {
+    padding: 5px 0;
+    flex-grow: 2;
+    width: 100%;
+}
+
+.Admin-Transaction-Table {
+    width: 100%;
+    text-align: center;
+}
+
+.Admin-Transaction-Table th {
+    background: transparent;
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+.Admin-Transaction-Table td {
+    padding: 20px 0;
+    text-align: center;
+}
+
+
+.Admin-Transactions-Right-Container {
+    padding-top: 70px;
+    width: 20%;
+}

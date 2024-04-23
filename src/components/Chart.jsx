@@ -1,8 +1,11 @@
 import TradingViewWidget from 'react-tradingview-widget';
 import '../styles/Chart.css'
 import { useEffect, useRef, useState } from 'react';
+import { useSelector } from "react-redux"
 
 const Chart = () => {
+
+  const search = useSelector((state) => state.search);
 
   const [parentSize, setParentSize] = useState({ width: 0, height: 0 });
   const parentRef = useRef(null);
