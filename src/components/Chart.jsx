@@ -15,6 +15,8 @@ const Chart = () => {
   }, []);
 
 
+  // Implement another fix for SR
+
   return (
     <div className="Chart" ref={parentRef}>
       <TradingViewWidget
