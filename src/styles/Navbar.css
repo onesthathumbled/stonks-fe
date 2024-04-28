@@ -36,3 +36,9 @@
 .Block-2 {
   justify-content: end;
 }
+
+.BEmail {
+  color: #eeb80b;
+  font-weight: 700;
+  cursor: pointer;
+}

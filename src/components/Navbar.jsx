@@ -9,10 +9,11 @@ import BookIcon from "@mui/icons-material/Book";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { logout } from "../features/auth/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -41,7 +42,7 @@ const Navbar = () => {
           Options
         </Link>
         <Link to="/dashboard/trading-bots" className="Link">
-          Trading Bots
+          Bots
         </Link>
         <Link to="/dashboard/data" className="Link">
           Data
@@ -52,6 +53,7 @@ const Navbar = () => {
       </div>
 
       <div className="Block-2">
+        <div className="BEmail">{user?.user?.data?.email}</div>
         <div>
           <AccountCircleIcon className="Link" />
         </div>

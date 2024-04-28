@@ -13,7 +13,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!auth.user) {
+    if (!auth.user?.data?.confirmed_at) {
       navigate("/");
     }
   }, [auth.user, navigate]);

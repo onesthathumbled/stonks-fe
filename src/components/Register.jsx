@@ -36,12 +36,17 @@ const Register = () => {
         password,
       };
 
-      dispatch(register(userData));
+      await dispatch(register(userData));
+      setFormData({
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
     }
   };
 
   useEffect(() => {
-    if (auth.user) {
+    if (auth.user?.data?.confirmed_at) {
       navigate("/dashboard/main");
     }
   }, [auth.user, navigate]);

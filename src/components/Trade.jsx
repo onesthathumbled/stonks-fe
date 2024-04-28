@@ -68,81 +68,102 @@ const Trade = () => {
 
   return (
     <div className="Trade">
-      <div className="Top">
-        <div>
-          <button>Cross</button>
-          <button>20x</button>
-        </div>
-        <div>
-          <TuneIcon className="Tune" />
-        </div>
-      </div>
-
-      <div className="Mid">
-        <div className="Inside">
-          <Link className="Text Tr">Limit</Link>
-          <Link className="Text Tr Market">Market</Link>
-          <div className="Inside-2">
-            <Link className="Text">Stop Limit</Link>
-            <ArrowDropDownIcon className="Icon" />
-          </div>
-        </div>
-
-        <div>
-          <InfoIcon className="Icon" />
-        </div>
-      </div>
-
-      <div className="LowerMid">
-        <div className="Wallet">
-          <p className="Text">Wallet</p>
-          <p className="Sub">${parseFloat(user.wallet?.wallet).toFixed(2)}</p>
-        </div>
-
-        <div className="Total">
-          <p className="Text">Total</p>
-          <p className="Sub">
-            $
-            {quantity
-              ? parseFloat(
-                  quantity * parseInt(symbol.quote?.latest_price)
-                ).toFixed(2)
-              : 0}
-          </p>
-        </div>
-
-        <div className="Total">
-          <p className="Text">Stocks</p>
-          <p className="Sub">
-            {user.stock?.stock?.quantity
-              ? parseInt(user.stock?.stock?.quantity)
-              : 0}
-          </p>
-        </div>
-      </div>
-
-      <div className="Form">
-        <form>
-          <div className="Price">
-            <label>Quantity</label>
-            <input
-              className="QuantityInput"
-              type="number"
-              value={quantity}
-              onChange={handleChange}
-            />
+      {user?.user?.data?.status ? (
+        <>
+          <div className="Top">
+            <div>
+              <button>Cross</button>
+              <button>20x</button>
+            </div>
+            <div>
+              <TuneIcon className="Tune" />
+            </div>
           </div>
 
-          <div className="Bottom">
-            <button type="submit" className="Buy" onClick={handleBuy}>
-              Buy/Long
-            </button>
-            <button type="submit" className="Sell" onClick={handleSell}>
-              Sell/Short
-            </button>
+          <div className="Mid">
+            <div className="Inside">
+              <Link className="Text Tr">Limit</Link>
+              <Link className="Text Tr Market">Market</Link>
+              <div className="Inside-2">
+                <Link className="Text">Stop Limit</Link>
+                <ArrowDropDownIcon className="Icon" />
+              </div>
+            </div>
+
+            <div>
+              <InfoIcon className="Icon" />
+            </div>
           </div>
-        </form>
-      </div>
+
+          <div className="LowerMid">
+            <div className="Wallet">
+              <p className="Text">Wallet</p>
+              <p className="Sub">
+                ${parseFloat(user.wallet?.wallet).toFixed(2)}
+              </p>
+            </div>
+
+            <div className="Total">
+              <p className="Text">Total</p>
+              <p className="Sub">
+                $
+                {quantity
+                  ? parseFloat(
+                      quantity * parseInt(symbol.quote?.latest_price)
+                    ).toFixed(2)
+                  : 0}
+              </p>
+            </div>
+
+            <div className="Total">
+              <p className="Text">Stocks</p>
+              <p className="Sub">
+                {user.stock?.stock?.quantity
+                  ? parseInt(user.stock?.stock?.quantity)
+                  : 0}
+              </p>
+            </div>
+          </div>
+
+          <div className="Form">
+            <form>
+              <div className="Price">
+                <label>Quantity</label>
+                <input
+                  className="QuantityInput"
+                  type="number"
+                  value={quantity}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="Bottom">
+                <button type="submit" className="Buy" onClick={handleBuy}>
+                  Buy/Long
+                </button>
+                <button type="submit" className="Sell" onClick={handleSell}>
+                  Sell/Short
+                </button>
+              </div>
+            </form>
+          </div>
+        </>
+      ) : (
+        <div className="TradeNot">
+          {user?.user?.data?.roles === 1 ? (
+            <div>
+              <p className="TradeNotT">Admins are not allowed to trade.</p>
+            </div>
+          ) : (
+            <div>
+              <div>
+                <p className="TradeNotT">You're not allowed to trade yet.</p>
+                <p className="TradeNotS">Please wait for the confirmation.</p>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
