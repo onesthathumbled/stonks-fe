@@ -239,20 +239,22 @@ export const updateTrader = createAsyncThunk(
 
 export const updateTraderPassword = createAsyncThunk(
   "auth/updateTraderPassword",
-  async ({ userId, password }, thunkAPI) => {
+  async ( userInfo, thunkAPI) => {
     try {
-      const response = await authService.updateTrader(userId, password);
-      return response.data;
-    } catch (error) {
-      const message =
-        (error.message && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
+        const response = await authService.updateTraderPassword(userInfo.id, userInfo.password);
+        return response.data;
+      } catch (error) {
+        const message =
+          (error.message && error.response.data && error.response.data.message) ||
+          error.message ||
+          error.toString();
 
-      return thunkAPI.rejectWithValue(message);
+        return thunkAPI.rejectWithValue(message);
+      }
     }
-  }
 );
+
+
 
 export const authSlice = createSlice({
   name: "auth",
