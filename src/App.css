@@ -1,12 +1,12 @@
 .App-Flex {
-    display: flex;
+  display: flex;
 
-    height: 100vh;
+  height: 89.7vh;
 }
 
-.Chart-Container {
+/* .Chart-Container {
     margin-top: 70px;
-    /* background: #000; */
+    background: #000;
     display: flex;
     flex-direction: column;
-}
+} */

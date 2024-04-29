@@ -17,7 +17,7 @@ const Dashboard = () => {
   const userRole = useSelector((state) => state.auth?.user?.data?.roles);
 
   useEffect(() => {
-    if (!auth.user) {
+    if (!auth.user?.data?.confirmed_at) {
       navigate("/");
     }
   }, [auth.user, navigate]);

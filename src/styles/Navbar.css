@@ -1,37 +1,44 @@
 .Navbar {
-    position: fixed;
-    height: 70px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #252B32;
-    background-color: #131722;
-    /* background-color: #131722; */
+  /* position: fixed; */
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #252b32;
+  background-color: #131722;
+  /* background-color: #131722; */
 }
 
 .Navbar .Link {
-    color: #EAECEF;
-    margin-right: 10px;
-    font-weight: bold;
-    transition: 0.2s;
+  color: #eaecef;
+  margin-right: 10px;
+  font-weight: bold;
+  transition: 0.2s;
 }
 
 .Navbar .Logo {
-    color: #EEB80B;
+  color: #eeb80b;
 }
 
 .Navbar .Link:hover {
-    color: #EEB80B;
-    cursor: pointer;
+  color: #eeb80b;
+  cursor: pointer;
 }
 
-.Block-1, .Block-2 {
-    display: flex;
-    align-items: center;
-    width: 50%;
+.Block-1,
+.Block-2 {
+  display: flex;
+  align-items: center;
+  width: 50%;
 }
 
 .Block-2 {
-    justify-content: end;
+  justify-content: end;
+}
+
+.BEmail {
+  color: #eeb80b;
+  font-weight: 700;
+  cursor: pointer;
 }

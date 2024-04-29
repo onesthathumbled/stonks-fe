@@ -40,7 +40,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (auth.user) {
+    if (auth.user?.data?.confirmed_at) {
       navigate("/dashboard/main");
     }
   }, [auth.user, navigate]);
