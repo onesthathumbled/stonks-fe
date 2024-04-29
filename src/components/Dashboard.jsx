@@ -18,6 +18,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!auth.user?.data?.confirmed_at) {
+      // if (!auth.user) {
       navigate("/");
     }
   }, [auth.user, navigate]);

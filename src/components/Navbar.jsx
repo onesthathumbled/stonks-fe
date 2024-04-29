@@ -17,7 +17,6 @@ const Navbar = () => {
   const user = useSelector((state) => state.auth);
 
   const userRole = useSelector((state) => state.auth?.user.data.roles);
-  console.log(userRole)
 
   const handleLogout = () => {
     dispatch(logout());
@@ -28,61 +27,62 @@ const Navbar = () => {
         {
           userRole === 0 ? (
             <div className="Navbar">
-        <div className="Block-1">
-          <HomeIcon className="Link" />
-          <Link to="/dashboard/main" className="Link Logo">
-            Stonks
-          </Link>
-          <Link to="/dashboard/portfolio" className="Link">
-            Portfolio
-          </Link>
-          <Link to="/dashboard/transactions" className="Link">
-            Transactions
-          </Link>
-          <Link to="/dashboard/trending" className="Link">
-            Trending
-          </Link>
-          <Link to="/dashboard/futures" className="Link">
-            Futures
-          </Link>
-          <Link to="/dashboard/options" className="Link">
-            Options
-          </Link>
-          <Link to="/dashboard/trading-bots" className="Link">
-            Bots
-          </Link>
-          <Link to="/dashboard/data" className="Link">
-            Data
-          </Link>
-          <Link to="/dashboard/more" className="Link">
-            More
-          </Link>
-        </div>
+              <div className="Block-1">
+                <HomeIcon className="Link" />
+                <Link to="/dashboard/main" className="Link Logo">
+                  Stonks
+                </Link>
+                <Link to="/dashboard/portfolio" className="Link">
+                  Portfolio
+                </Link>
+                <Link to="/dashboard/transactions" className="Link">
+                  Transactions
+                </Link>
+                <Link to="/dashboard/trending" className="Link">
+                  Trending
+                </Link>
+                <Link to="/dashboard/futures" className="Link">
+                  Futures
+                </Link>
+                <Link to="/dashboard/options" className="Link">
+                  Options
+                </Link>
+                <Link to="/dashboard/trading-bots" className="Link">
+                  Bots
+                </Link>
+                <Link to="/dashboard/data" className="Link">
+                  Data
+                </Link>
+                <Link to="/dashboard/more" className="Link">
+                  More
+                </Link>
+              </div>
 
-        <div className="Block-2">
-          <div className="BEmail">{user?.user?.data?.email}</div>
-          <div>
-            <AccountCircleIcon className="Link" />
-          </div>
-          <div>
-            <AccountBalanceWalletIcon className="Link" />
-          </div>
-          <div>
-            <BookmarkIcon className="Link" />
-          </div>
-          <div>
-            <LanguageIcon className="Link" />
-          </div>
-          <div>
-            <BookIcon className="Link" />
-          </div>
-          <div onClick={handleLogout}>
-            <SettingsIcon className="Link" />
-          </div>
-          <div>
-            <LightModeIcon className="Link" />
-          </div>
-        </div>
+              <div className="Block-2">
+                  <div className="BEmail">{user?.user?.data?.email}</div>
+                  <div>
+                    <AccountCircleIcon className="Link" />
+                  </div>
+                  <div>
+                    <AccountBalanceWalletIcon className="Link" />
+                  </div>
+                  <div>
+                    <BookmarkIcon className="Link" />
+                  </div>
+                  <div>
+                    <LanguageIcon className="Link" />
+                  </div>
+                  <div>
+                    <BookIcon className="Link" />
+                  </div>
+                  <div onClick={handleLogout}>
+                    <SettingsIcon className="Link" />
+                  </div>
+                  <div>
+                    <LightModeIcon className="Link" />
+                  </div>
+              </div>
+            </div>
         ):
         (
           <div className="Admin-NavBar-Container">

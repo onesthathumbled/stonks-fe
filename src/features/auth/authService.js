@@ -317,7 +317,7 @@ const updateTrader = async (userId, userData) => {
   }
 };
 
-const updateTraderPassword = async (userId, password) => {
+const updateTraderPassword = async (userId, userPass) => {
   try {
     const token = JSON.parse(localStorage.getItem("authToken"));
 
@@ -332,17 +332,15 @@ const updateTraderPassword = async (userId, password) => {
       },
     };
 
-    const requestData = {
+    const params = {
       user: {
-        ...password
+        password: userPass
       }
     };
 
-    const response = await axios.patch(`${API_URL}/admin/update_trader/${userId}`, requestData, config);
-    
-    // Assuming the response contains updated user data or a success message
+    const response = await axios.patch(`${API_URL}/admin/update_trader/${userId}`, params, config);
     return response.data;
-  } catch (error) {
+    } catch (error) {
     // Handle errors
     console.error("Error updating trader:", error);
     return null;
