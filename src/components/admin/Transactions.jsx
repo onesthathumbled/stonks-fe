@@ -36,7 +36,7 @@ const Transactions = () => {
                                         data.map((item, index) => (
                                             <tr key={index}>
                                                 <td>{item.date}</td>
-                                                <td>{item.user_id}</td>
+                                                <td>{item.user_email}</td>
                                                 <td>{item.symbol}</td>
                                                 <td>{item.company_name}</td>
                                                 <td>{item.quantity}</td>

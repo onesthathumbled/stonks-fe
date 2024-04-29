@@ -6,6 +6,7 @@
     align-items: center;
     border-bottom: 1px solid #252B32;
     background-color: #131722;
+    z-index: 9999;
 }
 
 .Block-1 {
@@ -33,5 +34,3 @@
 .Admin-NavBar-Container .Logo {
     color: #EEB80B;
 }
-
-

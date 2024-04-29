@@ -5,6 +5,8 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
+  pendingUsers: [],
+  pendingUserInfo: [],
   wallet: 0,
   stock: [],
   portfolio: [],
@@ -13,6 +15,9 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   message: "",
+  UserInfoShowStatus: false,
+  authenticateTrader: [],
+  updateUser: [],
 };
 
 export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
@@ -183,6 +188,72 @@ export const addNewUser = createAsyncThunk(
   }
 );
 
+export const getPendingUserInfo = createAsyncThunk(
+  "auth/getPendingUserInfo",
+  async (user_id, thunkAPI) => {
+    try {
+      return await authService.getPendingUserInfo(user_id);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const authenticateTrader = createAsyncThunk(
+  "auth/authenticateTrader",
+  async (arg, thunkAPI) => {
+    try {
+      return await authService.authenticateTrader(arg);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const updateTrader = createAsyncThunk(
+  "auth/updateTrader",
+  async ({ userId, userData }, thunkAPI) => {
+    try {
+      const response = await authService.updateTrader(userId, userData);
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const updateTraderPassword = createAsyncThunk(
+  "auth/updateTraderPassword",
+  async ({ userId, password }, thunkAPI) => {
+    try {
+      const response = await authService.updateTrader(userId, password);
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -193,6 +264,9 @@ export const authSlice = createSlice({
       state.isError = false;
       state.message = "";
     },
+    setUserInfoShowStatus: (state, action) => {
+      state.UserInfoShowStatus = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -314,13 +388,13 @@ export const authSlice = createSlice({
       .addCase(pendingUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.transactions = action.payload;
+        state.pendingUsers = action.payload;
       })
       .addCase(pendingUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        state.transactions = null;
+        state.pendingUsers = null;
       })
       .addCase(currentUsers.pending, (state) => {
         state.isLoading = true;
@@ -349,9 +423,71 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.transactions = null;
-      });
+      })
+      .addCase(getPendingUserInfo.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getPendingUserInfo.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.pendingUserInfo = action.payload;
+        // state.pendingUserInfo[action.payload.id] = action.payload;
+      })
+      .addCase(getPendingUserInfo.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.pendingUserInfo = null;
+      })
+      .addCase(authenticateTrader.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(authenticateTrader.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.authenticateTrader = action.payload;
+        // state.pendingUserInfo[action.payload.id] = action.payload;
+      })
+      .addCase(authenticateTrader.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.authenticateTrader = null;
+      })
+      .addCase(updateTrader.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateTrader.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.authenticateTrader = action.payload;
+        // state.pendingUserInfo[action.payload.id] = action.payload;
+      })
+      .addCase(updateTrader.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.authenticateTrader = null;
+      })
+      .addCase(updateTraderPassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateTraderPassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.authenticateTrader = action.payload;
+        // state.pendingUserInfo[action.payload.id] = action.payload;
+      })
+      .addCase(updateTraderPassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.authenticateTrader = null;
+      })
+      ;
   },
 });
 
 export const { reset } = authSlice.actions;
+export const { setUserInfoShowStatus } = authSlice.actions;
 export default authSlice.reducer;

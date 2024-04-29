@@ -3,11 +3,15 @@ import '../../styles/admin/Traders.css'
 import Current from "./Current";
 import Pending from "./Pending";
 import NewUser from "./NewUser";
+import ShowUserInfo from "./ShowUserInfo";
+import { setUserInfoShowStatus } from "../../features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Traders = () => {
   
   const [ TraderClass, setTraderClass ] = useState('current')
   const [ addNewUser, setAddNewUser ] = useState(false)
+  const dispatch = useDispatch();
 
   const handleOnClick = (e) => {
 
@@ -18,21 +22,28 @@ const Traders = () => {
       pending.style.color = '#EEB80B'
       current.style.color = 'white'
       setTraderClass('pending');
+      dispatch(setUserInfoShowStatus(null));
+      setAddNewUser(false);
     }
     else if (e.target === current) {
       pending.style.color = 'white'
       current.style.color = '#EEB80B'
       setTraderClass('current');
+      dispatch(setUserInfoShowStatus(null));
+      setAddNewUser(false);
     }
   };
 
-  const handleAddNewUserClick = (e) => {
-    e.preventDefault();
-    if (addNewUser === false) {
-      setAddNewUser(true);
+
+
+  const UserInfoShowStatus = useSelector((state) => state.auth?.UserInfoShowStatus);
+
+  const handleAddNewUserClick = () => {
+    if ( UserInfoShowStatus !== 'add' ) {
+      dispatch(setUserInfoShowStatus('add'));
     }
     else {
-      setAddNewUser(false);
+      dispatch(setUserInfoShowStatus(null));
     }
   }
 
@@ -65,13 +76,14 @@ const Traders = () => {
 
       <div className="Traders-Body-Right-Container">
             {
-              addNewUser === true ? (
+              UserInfoShowStatus === 'add' ? (
                 <NewUser />
               ):
               (
                 <div></div>
               )
             }
+            <ShowUserInfo />
       </div>
     </div>
   );

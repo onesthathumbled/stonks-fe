@@ -1,5 +1,10 @@
 .New-User-Main-Container {
-    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.Form-Container {
+    padding: 20px 0;
 }
 
 .Image-Container,
@@ -9,8 +14,28 @@
     justify-content: center;
 }
 
+.New-User-Title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #EEB80B;
+}
+
+.Note-Container {
+    size: 100%;
+    padding: 20px 10px;
+    text-align: justify;
+}
+
+.Note-Message {
+    font-size: 12px;
+    font-style: italic;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    border-radius: 10px;
+}
+
 .New-User-Body-Container {
-    padding: 20px 0;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,14 +45,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     width: 100%;
 }
 
-.New-User-Title {
-    font-size: 24px;
-    font-weight: 600;
-}
 
 .Input-Form {
     padding: 10px 5px;
@@ -41,6 +62,7 @@
     background-color: #EEB80B;
     border-color: #EEB80B;
     border-radius: 5px;
+    font-weight: 700;
 }
 
 .add-error {

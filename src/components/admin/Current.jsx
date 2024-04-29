@@ -2,11 +2,16 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../styles/admin/Current.css';
-import { currentUsers } from '../../features/auth/authSlice';
+import { currentUsers, getPendingUserInfo,setUserInfoShowStatus } from '../../features/auth/authSlice';
 
 const Current = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.auth?.transactions);
+
+  const getUserInfo = (id) => {
+    dispatch(getPendingUserInfo(id));
+    dispatch(setUserInfoShowStatus('info'));
+  };
 
   useEffect(() => {
       dispatch(currentUsers());
@@ -25,7 +30,7 @@ return (
         {
             data ? (
               data.map((item, index) => (
-                <tr key={index}>
+                <tr key={index}  onClick={() => getUserInfo(item.id)}>
                   <td>{item.email}</td>
                   <td>{item.roles === 0 ? "Trader" : "Admin"}</td>
                   <td>Authenticated</td>
