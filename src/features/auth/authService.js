@@ -226,7 +226,128 @@ const addNewUser = async (user) => {
 };
 
 
+const getPendingUserInfo = async (user_id) => {
+  
+  const token = JSON.parse(localStorage.getItem("authToken"));
 
+  if (!token) {
+    console.error("Token not found in localStorage");
+    return null;
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const response = await axios.get(`${API_URL}/admin/show_trader/${user_id}`, config);
+    return response.data;
+  } catch (error) {
+    // Handle errors
+    console.error("Error creating new user:", error);
+    return null;
+  }
+};
+
+const showTheUserInfo = {
+  UserInfoShowStatus: null,
+}
+
+
+const authenticateTrader = async (user_id) => {
+  const token = JSON.parse(localStorage.getItem("authToken"));
+
+  if (!token) {
+    console.error("Token not found in localStorage");
+    return null;
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  // Assuming you want to send user status in params
+  const params = {
+    user: {
+      status: true
+    }
+  };
+
+  try {
+    const response = await axios.patch(`${API_URL}/admin/approve_trader/${user_id}`, params, config);
+    return response.data;
+  } catch (error) {
+    // Handle errors
+    console.error("Error authenticating user:", error);
+    return null;
+  }
+};
+
+const updateTrader = async (userId, userData) => {
+  try {
+    const token = JSON.parse(localStorage.getItem("authToken"));
+
+    if (!token) {
+      console.error("Token not found in localStorage");
+      return null;
+    }
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const params = {
+      user: {
+        ...userData
+      }
+    };
+
+    const response = await axios.patch(`${API_URL}/admin/update_trader/${userId}`, params, config);
+    return response.data;
+  } catch (error) {
+    // Handle errors
+    console.error("Error updating trader:", error);
+    return null;
+  }
+};
+
+const updateTraderPassword = async (userId, password) => {
+  try {
+    const token = JSON.parse(localStorage.getItem("authToken"));
+
+    if (!token) {
+      console.error("Token not found in localStorage");
+      return null;
+    }
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const requestData = {
+      user: {
+        ...password
+      }
+    };
+
+    const response = await axios.patch(`${API_URL}/admin/update_trader/${userId}`, requestData, config);
+    
+    // Assuming the response contains updated user data or a success message
+    return response.data;
+  } catch (error) {
+    // Handle errors
+    console.error("Error updating trader:", error);
+    return null;
+  }
+};
 
 
 
@@ -240,7 +361,12 @@ const authService = {
   allTransactions,
   pendingUser,
   currentUsers,
-  addNewUser
+  addNewUser,
+  getPendingUserInfo,
+  showTheUserInfo,
+  authenticateTrader,
+  updateTrader,
+  updateTraderPassword
 };
 
 export default authService;

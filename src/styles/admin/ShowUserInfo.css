@@ -1,0 +1,234 @@
+.Show-User-Info-Main-Container {
+    width: 100%;
+    height: 100%;
+}
+
+.Show-User-Info-Body-Container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Show-User-Title-Container {
+    display: flex;
+    justify-content: start;
+    padding: 10px;
+    border-bottom: 1px solid #252B32;
+}
+
+.Show-User-Title {
+    font-weight: 600;
+    font-size: 18px;
+    color: #EEB80B;
+}
+
+.Show-User-Top-Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #252B32;
+    padding: 10px;
+}
+
+.Top-Info-Container {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.Top-Email {
+    font-weight: 600;
+    color: #EEB80B;
+    font-size: 18px;
+}
+
+.Show-User-Buttons-Container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.Approve-Button {
+    padding: 10px 20px;
+    background-color: #EEB80B;
+    font-size: 14px;
+    font-weight: 600;
+    border-color: #EEB80B;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.Approve-Button-Form {
+    width: 100%;
+}
+
+.Status-Container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.Status-Icon-Check {
+    color: #0BDA51;
+    font-size: 14px;
+}
+
+.Top-Status-Check {
+    color: #0BDA51;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.Status-Icon-Pending {
+    color: #FF4433;
+    font-size: 14px;
+}
+
+.Top-Status-Pending {
+    color: #FF4433;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.Edit-User-Container,
+.Show-User-Container {
+    flex-grow: 2;
+    padding: 10px 15px;
+}
+
+.Edit-User-Title {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.Change-Option {
+    font-size: 15px;
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.Change-Option:hover {
+    color: #EEB80B
+}
+
+.Active {
+    color: #EEB80B
+}
+
+.Edit-Form-Container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 0;
+}
+
+.Edit-Info-Container {
+    width: 100%;
+}
+
+.Edit-Input-Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    width: 100%;
+    padding: 5px;
+}
+
+.Edit-Form-Input {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.Edit-Form-Label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.Edit-Form-Input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #EEB80B;
+    color: #EEB80B;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.Edit-Form-Input:focus {
+    outline: none;
+}
+
+.Edit-Dropdown {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    color: #EEB80B;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 5px 0;
+}
+
+.Edit-Dropdown option {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    color: #EEB80B;
+    background-color: #1f232d;
+}
+
+.Edit-Button {
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    background: #EEB80B;
+    border-color: #EEB80B;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.Edit-Button-Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 5px;
+}
+
+
+.Edit-Pass-Container {
+    width: 100%;
+}
+
+.Show-User-Body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Show-User-Info-Container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+    gap: 5px;
+}
+
+.Show-User-Label {
+    font-size: 14px;
+}
+
+.Show-User-Value {
+    font-size: 17px;
+    font-weight: 600;
+    color: #EEB80B;
+}

@@ -4,7 +4,6 @@
 }
 
 .Traders-Body-Container {
-    flex-grow: 2;
     padding-top: 70px;
     width: 80%;
     border-right: 1px solid #252B32;
@@ -16,6 +15,7 @@
     width: 100%;
     display: flex;
     border-bottom: 1px solid #252B32;
+    
 }
 
 .Traders-Left-Options {
@@ -68,8 +68,11 @@
 }
 
 .Traders-Body-Right-Container {
-    flex-grow: 2;
     padding-top: 70px;
     width: 20%;
+    /* background: green; */
+    position: fixed;
+    right: 0;
+    height: 100%;
 }
 
