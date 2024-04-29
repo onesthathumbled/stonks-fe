@@ -6,11 +6,15 @@ import MainHolder from "./MainHolder";
 import Trending from "./Trending";
 import Portfolio from "./Portfolio";
 import Transactions from "./Transactions";
+import Traders from "./admin/Traders";
+import AdminTransaction from "./admin/AdminTransactions";
 import "../styles/Dashboard.css";
 
 const Dashboard = () => {
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
+
+  const userRole = useSelector((state) => state.auth?.user?.data?.roles);
 
   useEffect(() => {
     if (!auth.user) {
@@ -19,19 +23,32 @@ const Dashboard = () => {
   }, [auth.user, navigate]);
 
   return (
-    <div className="Dashboard">
-      <Navbar />
-      {/* <div className="App-Flex"> */}
-      <div className="Dashboard-Body">
-        <Routes>
-          <Route path="/main" element={<MainHolder />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/transactions" element={<Transactions />} />
-          <Route path="/trending" element={<Trending />} />
-        </Routes>
-      </div>
-      {/* </div> */}
-    </div>
+    <>
+      {userRole === 0 ? (
+        <div className="Dashboard">
+          <Navbar />
+          <div className="Dashboard-Body">
+            <Routes>
+              <Route path="/main" element={<MainHolder />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/transactions" element={<Transactions />} />
+              <Route path="/trending" element={<Trending />} />
+            </Routes>
+          </div>
+        </div>
+      ) : (
+        <div className="Admin-Dashboard-Container">
+          <Navbar />
+          <div className="Admin-Dashboard-Body">
+            <Routes>
+              <Route path="/main" element={<MainHolder />} />
+              <Route path="/traders" element={<Traders />} />
+              <Route path="/transactions" element={<AdminTransaction />} />
+            </Routes>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
