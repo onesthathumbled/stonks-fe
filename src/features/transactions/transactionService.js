@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:4000";
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://mysite-dfcd.onrender.com"
+    : "http://localhost:4000";
 
 const buy = async (transaction) => {
   const token = JSON.parse(localStorage.getItem("authToken"));
