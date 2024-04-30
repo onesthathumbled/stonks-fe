@@ -16,7 +16,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
 
-  const userRole = useSelector((state) => state.auth?.user.data.roles);
+  const userRole = useSelector((state) => state.auth?.user?.data?.roles);
 
   const handleLogout = () => {
     dispatch(logout());
