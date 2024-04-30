@@ -37,7 +37,14 @@ const Login = () => {
         password,
       };
 
-      dispatch(login(userData));
+      const loginSuccess = await dispatch(login(userData));
+
+      if (loginSuccess.type === "auth/login/rejected") {
+        toast.error("Invalid email or password.");
+      }
+      // else {
+      //   toast.success("Login successful!");
+      // }
     }
   };
 

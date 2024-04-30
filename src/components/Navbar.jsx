@@ -63,7 +63,9 @@ const Navbar = () => {
               <AccountCircleIcon className="Link" />
             </div>
             <div>
-              <AccountBalanceWalletIcon className="Link" />
+              <Link to="/dashboard/wallet">
+                <AccountBalanceWalletIcon className="Link" />
+              </Link>
             </div>
             <div>
               <BookmarkIcon className="Link" />
@@ -125,7 +127,7 @@ const Navbar = () => {
         </div>
       )}
 
-      <div className="Block-2">
+      {/* <div className="Block-2">
         <div className="BEmail">{user?.user?.data?.email}</div>
         <div>
           <AccountCircleIcon className="Link" />
@@ -150,7 +152,7 @@ const Navbar = () => {
         <div>
           <LightModeIcon className="Link" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

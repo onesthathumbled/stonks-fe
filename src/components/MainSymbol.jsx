@@ -23,7 +23,7 @@ const MainSymbol = () => {
   }, [dispatch, searchQuery]);
 
   return (
-    <div className="MainSymbol">
+    <div className="MainSymbol" style={{}}>
       <div className="Details Symbol">
         <input
           type="text"

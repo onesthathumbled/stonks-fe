@@ -239,22 +239,35 @@ export const updateTrader = createAsyncThunk(
 
 export const updateTraderPassword = createAsyncThunk(
   "auth/updateTraderPassword",
-  async ( userInfo, thunkAPI) => {
+  async (userInfo, thunkAPI) => {
     try {
-        const response = await authService.updateTraderPassword(userInfo.id, userInfo.password);
-        return response.data;
-      } catch (error) {
-        const message =
-          (error.message && error.response.data && error.response.data.message) ||
-          error.message ||
-          error.toString();
+      const response = await authService.updateTraderPassword(
+        userInfo.id,
+        userInfo.password
+      );
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
 
-        return thunkAPI.rejectWithValue(message);
-      }
+      return thunkAPI.rejectWithValue(message);
     }
+  }
 );
 
-
+export const topupWallet = createAsyncThunk(
+  "wallet/topup",
+  async (amount, thunkAPI) => {
+    try {
+      const response = await authService.topup(amount);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -485,6 +498,19 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.authenticateTrader = null;
+      })
+      .addCase(topupWallet.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(topupWallet.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+      })
+      .addCase(topupWallet.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
