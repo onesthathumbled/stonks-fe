@@ -25,7 +25,7 @@
     "install-force": "npm install --force",
     "install-legacy-peer-deps": "npm install --legacy-peer-deps",
     "start": "react-scripts start",
-    "build": "npm install --legacy-peer-deps && react-scripts build",
+    "build": "npm install --legacy-peer-deps && npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
