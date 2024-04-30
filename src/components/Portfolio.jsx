@@ -24,13 +24,18 @@ const Portfolio = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.symbol}</td>
-                <td>{item.company_name}</td>
-                <td>{item.quantity}</td>
-              </tr>
-            ))}
+            {
+              data ? (
+                data.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.symbol}</td>
+                    <td>{item.company_name}</td>
+                    <td>{item.quantity}</td>
+                  </tr>
+                ))
+              )
+              :null
+            }
           </tbody>
         </table>
       </div>

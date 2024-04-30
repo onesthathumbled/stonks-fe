@@ -68,7 +68,7 @@ const Trade = () => {
 
   return (
     <div className="Trade">
-      {user?.user?.data?.status ? (
+      {user?.user?.data?.status && user?.user?.data?.roles === 0 ? (
         <>
           <div className="Top">
             <div>
