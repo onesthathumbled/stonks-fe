@@ -146,7 +146,10 @@ const allTransactions = async () => {
   };
 
   try {
-    const response = await axios.get(`${API_URL}/admin/show_transactions`, config);
+    const response = await axios.get(
+      `${API_URL}/admin/show_transactions`,
+      config
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching all transactions:", error);
@@ -169,7 +172,10 @@ const pendingUser = async () => {
   };
 
   try {
-    const response = await axios.get(`${API_URL}/admin/show_pending_traders`, config);
+    const response = await axios.get(
+      `${API_URL}/admin/show_pending_traders`,
+      config
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching pending users:", error);
@@ -201,7 +207,6 @@ const currentUsers = async () => {
 };
 
 const addNewUser = async (user) => {
-  
   const token = JSON.parse(localStorage.getItem("authToken"));
 
   if (!token) {
@@ -216,7 +221,11 @@ const addNewUser = async (user) => {
   };
 
   try {
-    const response = await axios.post(`${API_URL}/admin/create_new_trader`, { user }, config);
+    const response = await axios.post(
+      `${API_URL}/admin/create_new_trader`,
+      { user },
+      config
+    );
     return response.data;
   } catch (error) {
     // Handle errors
@@ -225,9 +234,7 @@ const addNewUser = async (user) => {
   }
 };
 
-
 const getPendingUserInfo = async (user_id) => {
-  
   const token = JSON.parse(localStorage.getItem("authToken"));
 
   if (!token) {
@@ -242,7 +249,10 @@ const getPendingUserInfo = async (user_id) => {
   };
 
   try {
-    const response = await axios.get(`${API_URL}/admin/show_trader/${user_id}`, config);
+    const response = await axios.get(
+      `${API_URL}/admin/show_trader/${user_id}`,
+      config
+    );
     return response.data;
   } catch (error) {
     // Handle errors
@@ -253,8 +263,7 @@ const getPendingUserInfo = async (user_id) => {
 
 const showTheUserInfo = {
   UserInfoShowStatus: null,
-}
-
+};
 
 const authenticateTrader = async (user_id) => {
   const token = JSON.parse(localStorage.getItem("authToken"));
@@ -273,12 +282,16 @@ const authenticateTrader = async (user_id) => {
   // Assuming you want to send user status in params
   const params = {
     user: {
-      status: true
-    }
+      status: true,
+    },
   };
 
   try {
-    const response = await axios.patch(`${API_URL}/admin/approve_trader/${user_id}`, params, config);
+    const response = await axios.patch(
+      `${API_URL}/admin/approve_trader/${user_id}`,
+      params,
+      config
+    );
     return response.data;
   } catch (error) {
     // Handle errors
@@ -304,11 +317,15 @@ const updateTrader = async (userId, userData) => {
 
     const params = {
       user: {
-        ...userData
-      }
+        ...userData,
+      },
     };
 
-    const response = await axios.patch(`${API_URL}/admin/update_trader/${userId}`, params, config);
+    const response = await axios.patch(
+      `${API_URL}/admin/update_trader/${userId}`,
+      params,
+      config
+    );
     return response.data;
   } catch (error) {
     // Handle errors
@@ -334,20 +351,53 @@ const updateTraderPassword = async (userId, userPass) => {
 
     const params = {
       user: {
-        password: userPass
-      }
+        password: userPass,
+      },
     };
 
-    const response = await axios.patch(`${API_URL}/admin/update_trader/${userId}`, params, config);
+    const response = await axios.patch(
+      `${API_URL}/admin/update_trader/${userId}`,
+      params,
+      config
+    );
     return response.data;
-    } catch (error) {
+  } catch (error) {
     // Handle errors
     console.error("Error updating trader:", error);
     return null;
   }
 };
 
+const topup = async (amount) => {
+  try {
+    const token = JSON.parse(localStorage.getItem("authToken"));
 
+    if (!token) {
+      console.error("Token not found in localStorage");
+      return null;
+    }
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const params = {
+      amount: amount,
+    };
+
+    const response = await axios.post(
+      `${API_URL}/trader/topup`,
+      params,
+      config
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error topping up wallet:", error);
+    throw error;
+  }
+};
 
 const authService = {
   login,
@@ -364,7 +414,8 @@ const authService = {
   showTheUserInfo,
   authenticateTrader,
   updateTrader,
-  updateTraderPassword
+  updateTraderPassword,
+  topup,
 };
 
 export default authService;
