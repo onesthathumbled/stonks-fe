@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const API_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://mysite-dfcd.onrender.com"
-    : "http://localhost:4000";
+const API_URL = "https://mysite-dfcd.onrender.com";
+// const API_URL = "http://localhost:4000";
 
 const login = async (user) => {
   const response = await axios.post(`${API_URL}/user/login`, { user });
