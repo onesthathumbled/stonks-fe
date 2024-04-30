@@ -41,9 +41,6 @@ const ShowUserInfo = () => {
             wallet: data.wallet,
             roles: data.roles
         }));
-
-        console.log(formData)
-        console.log(changePassData)
     }
 
     const [formData, setFormData] = useState({
@@ -64,16 +61,15 @@ const ShowUserInfo = () => {
             ...prevFormData,
             [name]: value
         }));
-        console.log(formData)
     }
 
     const handlePassOnChange = (e) => {
         const { name, value } = e.target;
         setchangePassData(prevChangePassData => ({
-            ...prevChangePassData,
-            [name]: value
+          ...prevChangePassData,
+          [name]: value
         }));
-    }
+    };
 
     const authenticateUser = (id) => {
         dispatch(authenticateTrader(id));
@@ -83,12 +79,15 @@ const ShowUserInfo = () => {
         dispatch(updateTrader({ userId, userData }));
     };
 
-    const ChangePass = (passObj) => {
-        const password = {
-            password: passObj.pass
+    const ChangePass = (userId, userPass, userConfirmPass) => { // Receive userId as the first argument
+
+        const userInfo = {
+            id: userId,
+            password: userPass
         }
-        if (passObj.pass === passObj.confirmPass) {
-            dispatch(updateTraderPassword({ userId: data.id, password }));
+
+        if (userPass === userConfirmPass) {
+            dispatch(updateTraderPassword(userInfo));
         }
     };
 
@@ -179,17 +178,19 @@ const ShowUserInfo = () => {
                                                 </form>
                                             ): editOption === 'pass' ?
                                             (
-                                                <form className="Edit-Info-Container" onSubmit={() => ChangePass(data.id, changePassData)}>
-                                                    <div className = "Edit-Input-Container">
-                                                        <p className = "Edit-Form-Label">New Password</p>
-                                                        <input className = "Edit-Form-Input" name= 'pass' value={changePassData.pass} onChange={handlePassOnChange} type="password" required/>
+                                                <form className="Edit-Info-Container" onSubmit={() => {
+                                                    ChangePass(data.id, changePassData.pass, changePassData.confirmPass); // Pass both userId and changePassData
+                                                  }}>
+                                                    <div className="Edit-Input-Container">
+                                                      <p className="Edit-Form-Label">New Password</p>
+                                                      <input className="Edit-Form-Input" name='pass' value={changePassData.pass} onChange={handlePassOnChange} type="password" required />
                                                     </div>
-                                                    <div className = "Edit-Input-Container">
-                                                        <p className = "Edit-Form-Label">Confirm Password</p>
-                                                        <input className = "Edit-Form-Input" name= 'confirmPass' value={changePassData.confirmPass} onChange={handlePassOnChange} type="password" required/>
+                                                    <div className="Edit-Input-Container">
+                                                      <p className="Edit-Form-Label">Confirm Password</p>
+                                                      <input className="Edit-Form-Input" name='confirmPass' value={changePassData.confirmPass} onChange={handlePassOnChange} type="password" required />
                                                     </div>
-                                                    <div className = "Edit-Button-Container">
-                                                        <button type = 'Submit' className = "Edit-Button">Update</button>
+                                                    <div className="Edit-Button-Container">
+                                                      <button type='submit' className="Edit-Button">Update</button>
                                                     </div>
                                                 </form>
                                             ) :

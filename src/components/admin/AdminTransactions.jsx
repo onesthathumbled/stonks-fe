@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import '../../styles/admin/Transactions.css'
 import { useDispatch, useSelector } from "react-redux";
 import { allTransactions } from "../../features/auth/authSlice";
 
-const Transactions = () => {
+const AdminTransaction = () => {
     
     const dispatch = useDispatch();
     const data = useSelector((state) => state.auth?.transactions);
@@ -62,4 +62,4 @@ const Transactions = () => {
     );
     };
 
-export default Transactions;
+export default AdminTransaction;
