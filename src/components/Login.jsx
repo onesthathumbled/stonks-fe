@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from "../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 
+import { toast } from "react-toastify";
+
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +30,7 @@ const Login = () => {
     e.preventDefault();
 
     if (!email.trim() || !password.trim()) {
-      console.log(`Complete the details`);
+      toast.error("All fields are required.");
     } else {
       const userData = {
         email,

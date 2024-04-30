@@ -58,7 +58,9 @@ const Navbar = () => {
           <AccountCircleIcon className="Link" />
         </div>
         <div>
-          <AccountBalanceWalletIcon className="Link" />
+          <Link to="/dashboard/wallet">
+            <AccountBalanceWalletIcon className="Link" />
+          </Link>
         </div>
         <div>
           <BookmarkIcon className="Link" />

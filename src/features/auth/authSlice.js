@@ -266,7 +266,7 @@ export const authSlice = createSlice({
     },
     setUserInfoShowStatus: (state, action) => {
       state.UserInfoShowStatus = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -483,8 +483,7 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.authenticateTrader = null;
-      })
-      ;
+      });
   },
 });
 

@@ -42,6 +42,8 @@ const Register = () => {
         password: "",
         confirmPassword: "",
       });
+
+      navigate("/login");
     }
   };
 

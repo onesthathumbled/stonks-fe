@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { buy, sell } from "../features/transactions/transactionSlice";
 import { wallet, stock } from "../features/auth/authSlice";
 
-const Trade = () => {
+const Wallet = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
   const symbol = useSelector((state) => state.search);
@@ -67,10 +67,10 @@ const Trade = () => {
   }, [dispatch, quantity, symbol?.search]);
 
   return (
-    <div className="Trade">
+    <div className="Trade WDeposit">
       {user?.user?.data?.status ? (
         <>
-          <div className="Top">
+          {/* <div className="Top">
             <div>
               <button>Cross</button>
               <button>20x</button>
@@ -78,9 +78,9 @@ const Trade = () => {
             <div>
               <TuneIcon className="Tune" />
             </div>
-          </div>
+          </div> */}
 
-          <div className="Mid">
+          {/* <div className="Mid">
             <div className="Inside">
               <Link className="Text Tr">Limit</Link>
               <Link className="Text Tr Market">Market</Link>
@@ -93,11 +93,11 @@ const Trade = () => {
             <div>
               <InfoIcon className="Icon" />
             </div>
-          </div>
+          </div> */}
 
           <div className="LowerMid">
-            <div className="Wallet">
-              <p className="Text">Wallet</p>
+            <div className="Wallet WMid">
+              <p className="Text">Balance</p>
               <p className="Sub">
                 $
                 {isNaN(user.wallet?.wallet) || user.wallet?.wallet === null
@@ -106,7 +106,7 @@ const Trade = () => {
               </p>
             </div>
 
-            <div className="Total">
+            {/* <div className="Total">
               <p className="Text">Total</p>
               <p className="Sub">
                 $
@@ -116,22 +116,22 @@ const Trade = () => {
                     ).toFixed(2)
                   : 0}
               </p>
-            </div>
+            </div> */}
 
-            <div className="Total">
+            {/* <div className="Total">
               <p className="Text">Stocks</p>
               <p className="Sub">
                 {user.stock?.stock?.quantity
                   ? parseInt(user.stock?.stock?.quantity)
                   : 0}
               </p>
-            </div>
+            </div> */}
           </div>
 
           <div className="Form">
             <form>
               <div className="Price">
-                <label>Quantity</label>
+                <label>Amount</label>
                 <input
                   className="QuantityInput"
                   type="number"
@@ -142,11 +142,11 @@ const Trade = () => {
 
               <div className="Bottom">
                 <button type="submit" className="Buy" onClick={handleBuy}>
-                  Buy/Long
+                  Deposit
                 </button>
-                <button type="submit" className="Sell" onClick={handleSell}>
+                {/* <button type="submit" className="Sell" onClick={handleSell}>
                   Sell/Short
-                </button>
+                </button> */}
               </div>
             </form>
           </div>
@@ -155,12 +155,12 @@ const Trade = () => {
         <div className="TradeNot">
           {user?.user?.data?.roles === 1 ? (
             <div>
-              <p className="TradeNotT">Admins are not allowed to trade.</p>
+              <p className="TradeNotT">Admins are not allowed to deposit.</p>
             </div>
           ) : (
             <div>
               <div>
-                <p className="TradeNotT">You're not allowed to trade yet.</p>
+                <p className="TradeNotT">You're not allowed to deposit yet.</p>
                 <p className="TradeNotS">Please wait for the confirmation.</p>
               </div>
             </div>
@@ -171,4 +171,4 @@ const Trade = () => {
   );
 };
 
-export default Trade;
+export default Wallet;

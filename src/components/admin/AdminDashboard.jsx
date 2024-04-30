@@ -6,7 +6,7 @@ import Home from "./Home";
 import Traders from "./Traders";
 import Transactions from "./Transactions";
 
-import '../../styles/admin/AdminDashboard.css';
+import "../../styles/admin/AdminDashboard.css";
 
 const AdminDashboard = () => {
   return (

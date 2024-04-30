@@ -157,3 +157,14 @@ input::-webkit-inner-spin-button {
   margin-bottom: 5px;
   font-size: 25px;
 }
+
+.WDeposit {
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.WMid {
+}

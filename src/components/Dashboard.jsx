@@ -7,6 +7,7 @@ import Trending from "./Trending";
 import Portfolio from "./Portfolio";
 import Transactions from "./Transactions";
 import "../styles/Dashboard.css";
+import Wallet from "./Wallet";
 
 const Dashboard = () => {
   const auth = useSelector((state) => state.auth);
@@ -28,6 +29,7 @@ const Dashboard = () => {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/trending" element={<Trending />} />
+          <Route path="/wallet" element={<Wallet />} />
         </Routes>
       </div>
       {/* </div> */}
