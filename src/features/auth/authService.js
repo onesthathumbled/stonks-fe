@@ -209,6 +209,31 @@ const currentUsers = async () => {
   }
 };
 
+
+const adminUsers = async () => {
+  const token = JSON.parse(localStorage.getItem("authToken"));
+
+  if (!token) {
+    console.error("Token not found in localStorage");
+    return null;
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const response = await axios.get(`${API_URL}/admin/show_admins`, config);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching admins:", error);
+    return null;
+  }
+};
+
+
 const addNewUser = async (user) => {
   const token = JSON.parse(localStorage.getItem("authToken"));
 
@@ -412,6 +437,7 @@ const authService = {
   allTransactions,
   pendingUser,
   currentUsers,
+  adminUsers,
   addNewUser,
   getPendingUserInfo,
   showTheUserInfo,

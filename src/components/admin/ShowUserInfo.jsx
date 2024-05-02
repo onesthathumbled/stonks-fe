@@ -10,16 +10,16 @@ import { setUserInfoShowStatus, authenticateTrader, updateTrader, updateTraderPa
 const ShowUserInfo = () => {
     const [editOption, setEditOption] = useState('info');
 
-    const handleEditOptionOnClick = () => {
+    const handleEditOptionOnClick = (e) => {
         const changeInfo = document.getElementById('changeInfo');
         const changePass = document.getElementById('changePass');
 
-        if (editOption === 'info') {
+        if (e.target === changePass) {
             setEditOption('pass');
             changePass.style.color = '#EEB80B'
             changeInfo.style.color = 'white'
         }
-        else if (editOption === 'pass') {
+        else if (e.target === changeInfo) {
             setEditOption('info')
             changeInfo.style.color = '#EEB80B'
             changePass.style.color = 'white'
@@ -147,13 +147,13 @@ const ShowUserInfo = () => {
                                         {
                                             editOption === 'info' ? (
                                                 <form className="Edit-Info-Container" onSubmit={() => UpdateTrader(data.id, formData)}>
-                                                    <div className = "Edit-Input-Container">
+                                                    {/* <div className = "Edit-Input-Container">
                                                         <p className = "Edit-Form-Label">Email</p>
                                                         <input className = "Edit-Form-Input" placeholder = "Email" name= 'email' value={formData.email} onChange={handleOnChange} required/>
-                                                    </div>
+                                                    </div> */}
                                                     <div className = "Edit-Input-Container">
                                                         <p className = "Edit-Form-Label">Wallet</p>
-                                                        <input className = "Edit-Form-Input" placeholder = "Email" name= 'wallet' value={parseFloat(formData.wallet).toFixed(2)} onChange={handleOnChange} required/>
+                                                        <input className = "Edit-Form-Input" placeholder = "Email" name= 'wallet' value={formData.wallet} onChange={handleOnChange} required/>
                                                     </div>
                                                     <div className = "Edit-Input-Container">
                                                         <p className = "Edit-Form-Label">Role</p>
