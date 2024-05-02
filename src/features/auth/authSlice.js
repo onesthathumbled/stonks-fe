@@ -18,6 +18,7 @@ const initialState = {
   UserInfoShowStatus: false,
   authenticateTrader: [],
   updateUser: [],
+  adminUsers: [],
 };
 
 export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
@@ -161,6 +162,22 @@ export const currentUsers = createAsyncThunk(
   async (thunkAPI) => {
     try {
       return await authService.currentUsers();
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const adminUsers = createAsyncThunk(
+  "auth/adminUsers",
+  async (thunkAPI) => {
+    try {
+      return await authService.adminUsers();
     } catch (error) {
       const message =
         (error.message && error.response.data && error.response.data.message) ||
@@ -424,6 +441,20 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.transactions = null;
+      })
+      .addCase(adminUsers.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(adminUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.adminUsers = action.payload;
+      })
+      .addCase(adminUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.adminUsers = null;
       })
       .addCase(addNewUser.pending, (state) => {
         state.isLoading = true;
