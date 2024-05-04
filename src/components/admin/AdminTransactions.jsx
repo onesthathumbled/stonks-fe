@@ -41,7 +41,7 @@ const AdminTransaction = () => {
                                                 <td>{item.company_name}</td>
                                                 <td>{item.quantity}</td>
                                                 <td>{item.transaction_type}</td>
-                                                <td>₱{item.total_amount.toFixed(2)}</td>
+                                                <td>₱{parseFloat(item.total_amount).toFixed(2)}</td>
                                             </tr>
                                         ))
                                     ) : (
